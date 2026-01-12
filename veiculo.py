@@ -1,18 +1,16 @@
 class Veiculo:
-    def __init__(self, marca, preco):
+    def __init__(self, marca, preco, id_veiculo=None):
+        self.id = id_veiculo 
         self.marca = marca
-        self.preco = preco
+        self.preco = float(preco)
 
     def __str__(self):
-        return f"{self.marca} - {self.preco}€"
+        return f"ID: {self.id} | {self.marca.upper()} | Preço: {self.preco:.2f}€"
 
 class CarroEletrico(Veiculo):
-    def __init__(self, marca, preco, capacidade_bateria):
-        super().__init__(marca, preco)
-        self.capacidade_bateria = capacidade_bateria  # em kWh
-
-    def calcular_autonomia(self):
-        return self.capacidade_bateria * 5  # Suposição: 1 kWh = 5 km de autonomia
+    def __init__(self, marca, preco, capacidade_bateria, id_veiculo=None):
+        super().__init__(marca, preco, id_veiculo)
+        self.capacidade_bateria = capacidade_bateria
 
     def __str__(self):
-        return f"{super().__str__()} - Bateria: {self.capacidade_bateria} kWh"
+        return f"{super().__str__()} | Bateria: {self.capacidade_bateria}kWh"
